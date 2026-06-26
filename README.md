@@ -2,21 +2,19 @@
 
 **AdaFlow-VLA** 是一个面向机器人操作（Robotic Manipulation）的**视觉-语言-动作大模型（Vision-Language-Action, VLA）**。
 
-本仓库提供的是 **轻量级评测客户端 + 模型架构规范**：
+基于神经科学**中脑-脑桥-小脑的感觉运动分离机制**，构建**三元视觉-语言-动作架构**。以冻结大模型VLM为大脑**提取多层语义-几何先验**，设计**轻量脑桥适配器融合早期、中期、晚期隐藏状态**，引入**并行分类头**以可学习查询实现单次高频解码。提出**两阶段特征缓存**，将**语义规划与运动执行解耦并显式摊销计算**。使得平均成功率提升**10%**，训练效率**提升40%**。
 
-- 真正的模型权重与推理引擎部署在云端（`https://api.sai0.ai`），通过 RESTful API 对外提供动作预测服务。
 - 本地无需任何模型代码或 GPU，只依赖 `requests + numpy + Pillow` 即可调用模型。
 - 内置 [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 机器人操作基准的远程评测脚本，开箱即用。
-- `model/` 目录提供完整的**模型架构规范（接口定义）**，核心实现为闭源专有部分。
 
 ---
 
 ## 目录结构
 
 ```
-saivla-0-main/
-├── __init__.py          # 包入口，导出 Sai0VLAClient
-├── cli.py               # 命令行入口 sai0-eval
+AdaFlow-VLA/
+├── __init__.py          # 包入口，导出 VLAClient
+├── cli.py               # 命令行入口
 ├── client.py            # 远程推理客户端核心（HTTP 封装）
 ├── libero_eval.py       # LIBERO 基准远程评测主流程
 ├── utils.py             # 工具函数（图像/状态提取、视频保存、汇总）
@@ -239,3 +237,4 @@ eval_results/
 
 模型权重与完整训练代码托管于 AdaFlow-VLA 推理 API。
 `model/` 目录仅提供公开的架构规范，核心实现（特征融合、OFT 动作头、流匹配采样器等）为专有部分，请通过推理 API 访问完整模型。
+
