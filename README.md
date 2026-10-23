@@ -205,7 +205,7 @@ eval_results/
 ## Video Demo
 
 <p align="center">
-  <img src="assets/video.gif" width="100%" alt="Video Demo" />
+  <img src="./assets/video.gif" width="100%" alt="Video Demo" />
 </p>
 
 ## 主要结构
