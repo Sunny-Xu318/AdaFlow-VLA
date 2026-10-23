@@ -202,7 +202,13 @@ eval_results/
 
 ---
 
-## 创新之处
+## Video Demo
+
+<p align="center">
+  <img src="assets/video.gif" width="100%" alt="Video Demo" />
+</p>
+
+## 主要结构
 
 1. **多尺度 VLM 特征 + 自适应路由**
    不同于多数 VLA 只取 VLM 最后一层输出，AdaFlow-VLA 从多个 Transformer 层抽取特征，并用**可学习的门控网络**根据当前观测与指令动态加权融合，兼顾底层空间细节与高层语义。
